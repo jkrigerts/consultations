@@ -31,7 +31,7 @@ const ConsultationFetcherPublic = () => {
   const [consultationsDateAndTime, setConsultationsDateAndTime] = useState([]);
   const [loading, setLoading] = useState(true);
   const flag = useMediaQuery("(max-width: 464px)");
-  const flagSm = useMediaQuery("(max-width: 410px)");
+  const flagL = useMediaQuery("(min-width: 900px)");
   const flagXs = useMediaQuery("(max-width: 370px)");
 
   useEffect(() => {
@@ -63,42 +63,39 @@ const ConsultationFetcherPublic = () => {
 
   return (
     <Container>
-      <Center>
-        <Text
-          weight={900}
-          align="center"
-          variant="gradient"
-          gradient={{ from: "teal", to: "lime", deg: 105 }}
-          size="xl"
-          style={{
-            fontSize: 40,
-            lineHeight: 1.2,
-            marginBottom: 20,
-            marginTop: 20,
-            marginLeft: 15,
-            marginRight: 15,
-            position: "relative",
-          }}
-        >
-          Fizikas konsultācijas
-          <div
-            style={{
-              width: 35,
-              position: "relative",
-              top: -45,
-              left: flag ? (flagSm ? (flagXs ? "76vw" : "72vw") : "69vw") : 390,
-              transform: "rotate(45deg)",
-              opacity: 0.8,
-            }}
-          >
-            <Image
-              radius="sm"
-              src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
-              alt="Random unsplash image"
-            />
-          </div>
-        </Text>
-      </Center>
+      <Text
+        weight={900}
+        align="center"
+        variant="gradient"
+        gradient={{ from: "teal", to: "lime", deg: 105 }}
+        size="xl"
+        style={{
+          fontSize: 40,
+          lineHeight: 1.2,
+          marginBottom: 20,
+          marginTop: 20,
+          marginLeft: 15,
+          marginRight: 15,
+        }}
+      >
+        Fizikas konsultācijas
+      </Text>
+      <div
+        style={{
+          width: 35,
+          position: "absolute",
+          top: 31,
+          left: flag ? "72vw" : flagL ? "72vw" : "90vw",
+          transform: "rotate(45deg)",
+          opacity: 0.8,
+        }}
+      >
+        <Image
+          radius="sm"
+          src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
+          alt="Random unsplash image"
+        />
+      </div>
 
       {!loading ? (
         <SimpleGrid

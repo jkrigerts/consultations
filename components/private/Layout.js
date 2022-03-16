@@ -12,7 +12,7 @@ import {
   ThemeIcon,
   Button,
 } from "@mantine/core";
-import { Grain, List } from "tabler-icons-react";
+import { Grain, List, Logout } from "tabler-icons-react";
 import { useRouter } from "next/router";
 
 import { useAuth } from "../../contexts/AuthContext";
@@ -83,7 +83,7 @@ function Layout(props) {
               })}
             >
               <Group>
-                <ThemeIcon variant="light">
+                <ThemeIcon variant="light" color="violet">
                   <Grain size={16} />
                 </ThemeIcon>
                 <Text size="sm">Apmeklētāji</Text>
@@ -120,7 +120,34 @@ function Layout(props) {
             </UnstyledButton>
           </Navbar.Section>
           <Navbar.Section>
-            <Button onClick={handleLogout}>Izlogoties</Button>
+            <UnstyledButton
+              onClick={handleLogout}
+              sx={(theme) => ({
+                textDecoration: "none",
+                display: "block",
+                width: "100%",
+                padding: theme.spacing.xs,
+                borderRadius: theme.radius.sm,
+                color:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[0]
+                    : theme.black,
+
+                "&:hover": {
+                  backgroundColor:
+                    theme.colorScheme === "dark"
+                      ? theme.colors.dark[6]
+                      : theme.colors.gray[0],
+                },
+              })}
+            >
+              <Group>
+                <ThemeIcon variant="light" color="red">
+                  <Logout size={16} />
+                </ThemeIcon>
+                <Text size="sm">Izlogoties</Text>
+              </Group>
+            </UnstyledButton>
           </Navbar.Section>
         </Navbar>
       }

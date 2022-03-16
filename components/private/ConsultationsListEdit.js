@@ -79,13 +79,6 @@ const ConsultationsListEdit = ({ consultations, fetchConsultations }) => {
       </ActionIcon>
     </Group>
   ));
-
-  console.log(
-    JSON.stringify(consultations) == JSON.stringify(form.values.consultations)
-  );
-  console.log(JSON.stringify(form.values.consultations));
-  console.log(JSON.stringify(consultations));
-
   const cardFields = form.values.consultations.map((_, index) => (
     <Card
       style={{ width: 340, margin: "auto", marginTop: 20 }}

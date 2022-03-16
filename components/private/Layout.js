@@ -10,7 +10,7 @@ import {
   UnstyledButton,
   Group,
   ThemeIcon,
-  Button,
+  Divider,
 } from "@mantine/core";
 import { Grain, List, Logout } from "tabler-icons-react";
 import { useRouter } from "next/router";
@@ -118,8 +118,37 @@ function Layout(props) {
                 <Text size="sm">Konsultācijas</Text>
               </Group>
             </UnstyledButton>
+            <Divider my="sm" />
+            <UnstyledButton
+              onClick={handleLogout}
+              sx={(theme) => ({
+                textDecoration: "none",
+                display: "block",
+                width: "100%",
+                padding: theme.spacing.xs,
+                borderRadius: theme.radius.sm,
+                color:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[0]
+                    : theme.black,
+
+                "&:hover": {
+                  backgroundColor:
+                    theme.colorScheme === "dark"
+                      ? theme.colors.dark[6]
+                      : theme.colors.gray[0],
+                },
+              })}
+            >
+              <Group>
+                <ThemeIcon variant="light" color="red">
+                  <Logout size={16} />
+                </ThemeIcon>
+                <Text size="sm">Izlogoties</Text>
+              </Group>
+            </UnstyledButton>
           </Navbar.Section>
-          <Navbar.Section>
+          <Navbar.Section mt="md">
             <UnstyledButton
               onClick={handleLogout}
               sx={(theme) => ({

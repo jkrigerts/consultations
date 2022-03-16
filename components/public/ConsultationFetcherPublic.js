@@ -31,7 +31,9 @@ const ConsultationFetcherPublic = () => {
   const [consultationsDateAndTime, setConsultationsDateAndTime] = useState([]);
   const [loading, setLoading] = useState(true);
   const flag = useMediaQuery("(max-width: 464px)");
-  const flagL = useMediaQuery("(min-width: 900px)");
+  const flagXL = useMediaQuery("(min-width: 1080px)");
+  const flagXXL = useMediaQuery("(min-width: 1330px)");
+  const flagL = useMediaQuery("(min-width: 720px)");
   const screenW = screen.width;
   console.log("Platums ir" + screenW);
 
@@ -63,7 +65,7 @@ const ConsultationFetcherPublic = () => {
   });
 
   return (
-    <Container>
+    <Container style={{ position: "relative" }}>
       <Text
         weight={900}
         align="center"
@@ -85,8 +87,16 @@ const ConsultationFetcherPublic = () => {
         style={{
           width: 35,
           position: "absolute",
-          top: 31,
-          left: flag ? "72vw" : flagL ? "72vw" : "90vw",
+          top: 14,
+          left: flag
+            ? "72vw"
+            : flagL
+            ? flagXL
+              ? flagXXL
+                ? "52vw"
+                : "63vw"
+              : "78vw"
+            : "92vw",
           transform: "rotate(45deg)",
           opacity: 0.8,
         }}
@@ -94,7 +104,7 @@ const ConsultationFetcherPublic = () => {
         <Image
           radius="sm"
           src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
-          alt="Random unsplash image"
+          alt="Support Ukraine"
         />
       </div>
 

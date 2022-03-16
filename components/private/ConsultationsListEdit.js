@@ -156,7 +156,7 @@ const ConsultationsListEdit = ({ consultations, fetchConsultations }) => {
     <Box sx={{ maxWidth: 768 }} mx="auto">
       {fields.length > 0 ? (
         <>
-          <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+          <MediaQuery smallerThan="md" styles={{ display: "none" }}>
             <div>
               <Group mt="xs">
                 <Text weight={500} size="sm" sx={{ flex: 1 }}>
@@ -175,7 +175,7 @@ const ConsultationsListEdit = ({ consultations, fetchConsultations }) => {
               {fields}
             </div>
           </MediaQuery>
-          <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+          <MediaQuery largerThan="md" styles={{ display: "none" }}>
             <div>{cardFields}</div>
           </MediaQuery>
         </>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ConsultationsListEdit from "./ConsultationsListEdit";
-import { Loader, Group } from "@mantine/core";
+import { Loader, Group, Text } from "@mantine/core";
 
 import { getData } from "../../lib/utils";
 
@@ -20,6 +20,22 @@ const ConsultationFetcherEdit = () => {
 
   return (
     <>
+      <Text
+        weight={900}
+        align="left"
+        variant=""
+        size="xl"
+        style={{
+          fontSize: 30,
+          lineHeight: 1.2,
+          marginBottom: 40,
+          marginTop: 20,
+          marginLeft: 15,
+          marginRight: 15,
+        }}
+      >
+        Konsultāciju rediģēšana
+      </Text>
       {loading ? (
         <Group position="center" mt="md">
           <Loader color="teal" />

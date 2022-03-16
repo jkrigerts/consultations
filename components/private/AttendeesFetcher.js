@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Group, Loader } from "@mantine/core";
+import { Group, Loader, Text } from "@mantine/core";
 
 import { collection, query, orderBy, getDocs } from "firebase/firestore";
 
 import { db } from "../../lib/firebase";
 import AttendeesCard from "./AttendeesCard";
 
-const AttendeesFethcer = () => {
+const AttendeesFetcher = () => {
   const [attendees, setAttendees] = useState([]);
   const [uniqueConsultationIds, setUniqueConsultationIds] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -47,7 +47,22 @@ const AttendeesFethcer = () => {
 
   return (
     <>
-      <h1>Hi mom</h1>
+      <Text
+        weight={900}
+        align="left"
+        variant=""
+        size="xl"
+        style={{
+          fontSize: 30,
+          lineHeight: 1.2,
+          marginBottom: 20,
+          marginTop: 20,
+          marginLeft: 15,
+          marginRight: 15,
+        }}
+      >
+        Konsultāciju apmeklētāji
+      </Text>
       {loading ? (
         <Group position="center" mt="md">
           <Loader color="teal" />
@@ -59,4 +74,4 @@ const AttendeesFethcer = () => {
   );
 };
 
-export default AttendeesFethcer;
+export default AttendeesFetcher;

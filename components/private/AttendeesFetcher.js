@@ -40,7 +40,7 @@ const AttendeesFetcher = () => {
       <AttendeesCard
         key={consultationId}
         consultation={attendeesPerConsultation[0].consultation}
-        listOfAttendees={attendeesPerConsultation}
+        listOfAttendeesProp={attendeesPerConsultation}
       />
     );
   });

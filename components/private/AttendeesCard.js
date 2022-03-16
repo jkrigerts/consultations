@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Card,
   Image,
@@ -8,12 +10,37 @@ import {
   useMantineTheme,
   Table,
   ActionIcon,
+  Loader,
+  Center,
 } from "@mantine/core";
 import { Trash } from "tabler-icons-react";
 
+import { doc, deleteDoc } from "firebase/firestore";
+
+import { db } from "../../lib/firebase";
 import { monthNameMap, dayNameMap } from "../../lib/utils";
 
-const AttendeesCard = ({ consultation, listOfAttendees }) => {
+const AttendeesCard = ({ consultation, listOfAttendeesProp }) => {
+  const [loading, setLoading] = useState(false);
+  const [listOfAttendees, setListOfAttendees] = useState(listOfAttendeesProp);
+
+  const handleDelete = async (attendee) => {
+    console.log(attendee.id);
+    setLoading(true);
+    await deleteDoc(doc(db, "applications", attendee.id));
+
+    const index = listOfAttendees.indexOf(attendee);
+    console.log(index);
+    if (index > -1) {
+      setListOfAttendees([
+        ...listOfAttendees.slice(0, index),
+        ...listOfAttendees.slice(index + 1),
+      ]);
+    }
+    console.log(listOfAttendees);
+    setLoading(false);
+  };
+
   const rows = listOfAttendees.map((attendee) => (
     <tr key={attendee.id}>
       <td>{`${attendee.firstName} ${attendee.surname}`}</td>
@@ -23,7 +50,7 @@ const AttendeesCard = ({ consultation, listOfAttendees }) => {
         <ActionIcon
           color="red"
           variant="hover"
-          onClick={() => console.log("Hi")}
+          onClick={() => handleDelete(attendee)}
         >
           <Trash size={16} />
         </ActionIcon>
@@ -49,18 +76,25 @@ const AttendeesCard = ({ consultation, listOfAttendees }) => {
             .toDate()
             .getHours()}:${consultation.ctime[1].toDate().getMinutes()}`}
         </Text>
-
-        <Table striped>
-          <thead>
-            <tr>
-              <th>Skolēns</th>
-              <th>Klase</th>
-              <th>Iemesls</th>
-              <th>Dzēst</th>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </Table>
+        {listOfAttendees.length === 0 ? (
+          <Text>Neviens nav pieteicies</Text>
+        ) : loading ? (
+          <Center>
+            <Loader color="teal" />
+          </Center>
+        ) : (
+          <Table striped>
+            <thead>
+              <tr>
+                <th>Skolēns</th>
+                <th>Klase</th>
+                <th>Iemesls</th>
+                <th>Dzēst</th>
+              </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+          </Table>
+        )}
       </Card>
     </div>
   );

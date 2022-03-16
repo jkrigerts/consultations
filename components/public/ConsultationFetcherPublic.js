@@ -32,7 +32,8 @@ const ConsultationFetcherPublic = () => {
   const [loading, setLoading] = useState(true);
   const flag = useMediaQuery("(max-width: 464px)");
   const flagL = useMediaQuery("(min-width: 900px)");
-  const flagXs = useMediaQuery("(max-width: 370px)");
+  const screenW = screen.width;
+  console.log("Platums ir" + screenW);
 
   useEffect(() => {
     const fetchData = async () => {

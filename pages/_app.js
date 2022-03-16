@@ -9,7 +9,7 @@ export default function App(props) {
   return (
     <AuthProvider>
       <Head>
-        <title>Konsultācijas</title>
+        <title>Fizikas konsultācijas</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

@@ -19,7 +19,11 @@ const listOfReasons = [
   "Parunāt par dzīvi",
 ];
 
-const ConsultationRegisterForm = ({ consultation, classes }) => {
+const ConsultationRegisterForm = ({
+  consultation,
+  classes,
+  handleConfetti,
+}) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -52,6 +56,7 @@ const ConsultationRegisterForm = ({ consultation, classes }) => {
       });
       setLoading(false);
       setFormSubmitted(true);
+      handleConfetti();
     };
 
     addData();

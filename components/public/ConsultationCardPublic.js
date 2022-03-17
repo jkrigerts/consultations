@@ -80,7 +80,7 @@ const ConsultationCardPublic = ({ consultation, classes }) => {
                 spacing="xs"
                 style={{ marginBottom: theme.spacing.lg }}
               >
-                <Text weight={400} style={{ lineHeight: 0.8, marginTop: 15 }}>
+                <Text weight={400} style={{ lineHeight: 0.9, marginTop: 15 }}>
                   {dayNameMap[consultation.cdate.getDay()]}
                 </Text>
                 <Text
@@ -88,11 +88,11 @@ const ConsultationCardPublic = ({ consultation, classes }) => {
                   variant="gradient"
                   gradient={{ from: "teal", to: "lime", deg: 105 }}
                   size="md"
-                  style={{ fontSize: 60, lineHeight: 0.8 }}
+                  style={{ fontSize: 60, lineHeight: 0.9 }}
                 >
                   {`${consultation.cdate.getDate()}.`}
                 </Text>
-                <Text weight={400} style={{ lineHeight: 0.8 }}>
+                <Text weight={400} style={{ lineHeight: 0.9 }}>
                   {monthNameMap[consultation.cdate.getMonth()]}
                 </Text>
               </Group>

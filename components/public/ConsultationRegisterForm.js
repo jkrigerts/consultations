@@ -14,8 +14,9 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 
 const listOfReasons = [
-  "Pārrakstīt pārbaudes darbu",
   "Mācīties",
+  "Pārrakstīt pārbaudes darbu",
+  "Uzrakstīt pārbaudes darbu",
   "Parunāt par dzīvi",
 ];
 

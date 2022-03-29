@@ -23,9 +23,9 @@ const AttendeesFetcher = () => {
 
       att.sort((a, b) =>
         a.consultation.cdate > b.consultation.cdate
-          ? 1
-          : b.consultation.cdate > a.consultation.cdate
           ? -1
+          : b.consultation.cdate > a.consultation.cdate
+          ? 1
           : 0
       );
       setAttendees(att);

@@ -16,6 +16,9 @@ const AttendeesFetcher = () => {
       const q = query(collection(db, "applications"));
       const querySnapshot = await getDocs(q);
       const att = [];
+      querySnapshot.sort((a, b) =>
+        a.cdate > b.cdate ? 1 : b.cdate > a.cdate ? -1 : 0
+      );
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         att.push(doc.data());

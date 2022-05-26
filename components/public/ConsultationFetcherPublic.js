@@ -109,17 +109,23 @@ const ConsultationFetcherPublic = () => {
       </div>
 
       {!loading ? (
-        <SimpleGrid
-          cols={2}
-          spacing="xl"
-          breakpoints={[
-            { maxWidth: 980, cols: 2, spacing: "md" },
-            { maxWidth: 755, cols: 1, spacing: "sm" },
-            { maxWidth: 600, cols: 1, spacing: "sm" },
-          ]}
-        >
-          {renderConsultations}
-        </SimpleGrid>
+        renderConsultations.length === 0 ? (
+          <Text align="center">
+            Konsultācijas fizikā beigušās. Lai jauka vasara!
+          </Text>
+        ) : (
+          <SimpleGrid
+            cols={2}
+            spacing="xl"
+            breakpoints={[
+              { maxWidth: 980, cols: 2, spacing: "md" },
+              { maxWidth: 755, cols: 1, spacing: "sm" },
+              { maxWidth: 600, cols: 1, spacing: "sm" },
+            ]}
+          >
+            {renderConsultations}
+          </SimpleGrid>
+        )
       ) : (
         <>
           <Text align="center">

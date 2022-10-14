@@ -8,7 +8,7 @@ import {
   useMantineTheme,
   Transition,
 } from "@mantine/core";
-
+import { useMediaQuery } from "@mantine/hooks";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 
@@ -44,6 +44,7 @@ const ConsultationCardPublic = ({ consultation, classes }) => {
   const [party, setParty] = useState(false);
   const [opened, setOpened] = useState(false);
   const [ready, setReady] = useState(false);
+  const flag = useMediaQuery("(max-width: 464px)");
   console.log(consultation);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const ConsultationCardPublic = ({ consultation, classes }) => {
           <div
             style={{
               ...styles,
-              width: 320,
+              width: flag ? 300 : 320,
               margin: "auto",
               marginTop: 20,
               marginBottom: 40,
@@ -116,7 +117,7 @@ const ConsultationCardPublic = ({ consultation, classes }) => {
               <Modal
                 opened={opened}
                 onClose={() => setOpened(false)}
-                title="Fizikas konsultācija"
+                title="Konsultācija pie Jēkaba"
               >
                 <Text weight="bold" style={{ marginBottom: 20 }}>
                   {`${

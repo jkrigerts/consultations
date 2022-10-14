@@ -12,30 +12,19 @@ import { getData } from "../../lib/utils";
 import ConsultationCardPublic from "./ConsultationCardPublic";
 
 const cl = [
-  { value: "8a", label: "8.a" },
-  { value: "8b", label: "8.b" },
-  { value: "8c", label: "8.c" },
-  { value: "8d", label: "8.d" },
-  { value: "8e", label: "8.e" },
-  { value: "8g", label: "8.g" },
-  { value: "8l", label: "8.l" },
-  { value: "9a", label: "9.a" },
-  { value: "9b", label: "9.b" },
-  { value: "9c", label: "9.c" },
-  { value: "9d", label: "9.d" },
-  { value: "9e", label: "9.e" },
-  { value: "9g", label: "9.g" },
+  { value: "IPa22", label: "IPa22" },
+  { value: "IPb22", label: "IPb22" },
+  { value: "IP19", label: "IP19" },
+  { value: "Cita", label: "Cita" },
 ];
 
 const ConsultationFetcherPublic = () => {
   const [consultationsDateAndTime, setConsultationsDateAndTime] = useState([]);
   const [loading, setLoading] = useState(true);
   const flag = useMediaQuery("(max-width: 464px)");
-  const flagXL = useMediaQuery("(min-width: 1080px)");
-  const flagXXL = useMediaQuery("(min-width: 1330px)");
-  const flagL = useMediaQuery("(min-width: 720px)");
-  const screenW = screen.width;
-  console.log("Platums ir" + screenW);
+  const flagXL = useMediaQuery("(min-width: 1120px)");
+  const flagXXL = useMediaQuery("(min-width: 1370px)");
+  const flagL = useMediaQuery("(min-width: 820px)");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,7 +54,9 @@ const ConsultationFetcherPublic = () => {
   });
 
   return (
-    <Container style={{ position: "relative" }}>
+    <Container
+      style={{ position: "relative", paddingLeft: 8, paddingRight: 8 }}
+    >
       <Text
         weight={900}
         align="center"
@@ -73,7 +64,7 @@ const ConsultationFetcherPublic = () => {
         gradient={{ from: "teal", to: "lime", deg: 105 }}
         size="xl"
         style={{
-          fontSize: 40,
+          fontSize: flag ? 38 : 40,
           lineHeight: 1.2,
           marginBottom: 20,
           marginTop: 20,
@@ -81,15 +72,15 @@ const ConsultationFetcherPublic = () => {
           marginRight: 15,
         }}
       >
-        Fizikas konsultācijas
+        Konsultācijas pie Jēkaba
       </Text>
       <div
         style={{
           width: 35,
           position: "absolute",
-          top: 14,
+          top: flag ? 58 : 14,
           left: flag
-            ? "72vw"
+            ? "82vw"
             : flagL
             ? flagXL
               ? flagXXL
@@ -110,9 +101,7 @@ const ConsultationFetcherPublic = () => {
 
       {!loading ? (
         renderConsultations.length === 0 ? (
-          <Text align="center">
-            Konsultācijas fizikā beigušās. Lai jauka vasara!
-          </Text>
+          <Text align="center">Neviena konsultācija netika atrasta</Text>
         ) : (
           <SimpleGrid
             cols={2}

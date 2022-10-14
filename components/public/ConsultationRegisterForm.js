@@ -80,7 +80,7 @@ const ConsultationRegisterForm = ({
       <Select
         required
         mt="md"
-        label="Tava klase"
+        label="Tava grupa"
         data={classes}
         {...form.getInputProps("class", { type: "select" })}
       />
@@ -90,6 +90,7 @@ const ConsultationRegisterForm = ({
         placeholder="Mācīties"
         {...form.getInputProps("reason")}
         data={listOfReasons}
+        //data={form.getListInputProps("consultations", index, "class").value}
       />
       {formSubmitted ? (
         <Text

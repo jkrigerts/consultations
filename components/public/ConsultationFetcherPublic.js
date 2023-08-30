@@ -12,9 +12,13 @@ import { getData } from "../../lib/utils";
 import ConsultationCardPublic from "./ConsultationCardPublic";
 
 const cl = [
+  { value: "IPa23", label: "IPa23" },
+  { value: "IPb23", label: "IPb23" },
   { value: "IPa22", label: "IPa22" },
   { value: "IPb22", label: "IPb22" },
-  { value: "IP19", label: "IP19" },
+  { value: "IPa21", label: "IPa21" },
+  { value: "IPb21", label: "IPb21" },
+  { value: "IP20", label: "IP20" },
   { value: "Cita", label: "Cita" },
 ];
 
